@@ -1,4 +1,5 @@
-import { FaGuitar, FaMusic } from "react-icons/fa";
+import { FaMusic } from "react-icons/fa";
+import { Link } from "react-router-dom";
 const NavBar = () => {
     const navElements = <>
         <li><a>Home</a></li>
@@ -7,7 +8,7 @@ const NavBar = () => {
     </>
     return (
         <>
-            <div className="navbar bg-base-100">
+            <div className="navbar bg-base-100 h-28  shadow rounded">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -17,7 +18,15 @@ const NavBar = () => {
                             {navElements}
                         </ul>
                     </div>
-                    <a className="btn btn-ghost normal-case text-xl"> <FaGuitar className="text-indigo-600"></FaGuitar><span className="text-green-600 font-bold space-x-0">M</span>elody<span className="text-green-600 font-bold space-x-0">T</span>une <FaMusic className="text-indigo-600"></FaMusic></a>
+                    <Link className="btn btn-ghost normal-case text-xl">
+                        <p className="md:flex md:items-center">
+                            <span><FaMusic className="text-lime-500 text-3xl"></FaMusic></span>
+                            <span className="text-xs md:text-base">
+                                <span className="text-indigo-500 font-bold text-2xl ml-1">M</span>elody
+                                <span className="text-pink-500 font-bold text-2xl">T</span>une
+                            </span>
+                        </p>
+                    </Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">

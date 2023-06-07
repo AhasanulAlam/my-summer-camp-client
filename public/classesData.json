@@ -1,0 +1,113 @@
+[
+    {
+      "_id": "1",
+      "className": "Violin",
+      "classImage": "https://i.ibb.co/DkZfWfm/bowed-instrument-1853324-1280.jpg",
+      "instructorName": "John Smith",
+      "instructorEmail": "john.smith@example.com",
+      "availableSeats": 10,
+      "price": 150,
+      "duration": 120,
+      "classStatus": "pending"
+    },
+    {
+      "_id": "2",
+      "className": "Bass Guitar",
+      "classImage": "https://i.ibb.co/qkBPdn6/bass-guitar-1841186-1280.jpg",
+      "instructorName": "Emily Johnson",
+      "instructorEmail": "emily.johnson@example.com",
+      "availableSeats": 5,
+      "price": 120,
+      "duration": 90,
+      "classStatus": "approved"
+    },
+    {
+      "_id": "3",
+      "className": "Piano",
+      "classImage": "https://i.ibb.co/CnWy50D/piano-gca6527681-1280.jpg",
+      "instructorName": "Michael Thompson",
+      "instructorEmail": "michael.thompson@example.com",
+      "availableSeats": 10,
+      "price": 200,
+      "duration": 180,
+      "classStatus": "denied"
+    },
+    {
+      "_id": "4",
+      "className": "Flute",
+      "classImage": "https://i.ibb.co/BfdmVRw/whistle-924346-1280.jpg",
+      "instructorName": "Sarah Adams",
+      "instructorEmail": "sarah.adams@example.com",
+      "availableSeats": 12,
+      "price": 180,
+      "duration": 120,
+      "classStatus": "pending"
+    },
+    {
+      "_id": "5",
+      "className": "Drams",
+      "classImage": "https://i.ibb.co/3kxNKhV/drum-set-1839383-1280.jpg",
+      "instructorName": "David Wilson",
+      "instructorEmail": "david.wilson@example.com",
+      "availableSeats": 5,
+      "price": 100,
+      "duration": 60,
+      "classStatus": "approved"
+    },
+    {
+      "_id": "6",
+      "className": "Cello",
+      "classImage": "https://i.ibb.co/fnT1sS1/cello-7219171-1280.jpg",
+      "instructorName": "Jessica Roberts",
+      "instructorEmail": "jessica.roberts@example.com",
+      "availableSeats": 6,
+      "price": 130,
+      "duration": 90,
+      "classStatus": "pending"
+    },
+    {
+      "_id": "7",
+      "className": "Saxophone",
+      "classImage": "https://i.ibb.co/3k6r4St/saxophone-3246650-1280.jpg",
+      "instructorName": "Olivia Anderson",
+      "instructorEmail": "olivia.anderson@example.com",
+      "availableSeats": 12,
+      "price": 140,
+      "duration": 90,
+      "classStatus": "approved"
+    },
+    {
+      "_id": "8",
+      "className": "Pan Flute",
+      "classImage": "https://i.ibb.co/GtCwB4c/pan-flute-653495-1280.jpg",
+      "instructorName": "Daniel Thompson",
+      "instructorEmail": "daniel.thompson@example.com",
+      "availableSeats": 10,
+      "price": 160,
+      "duration": 120,
+      "classStatus": "pending"
+    },
+    {
+      "_id": "9",
+      "className": "Electric Guitar",
+      "classImage": "https://i.ibb.co/K76cG2q/guitar-gb3c9f070f-1280.jpg",
+      "instructorName": "Maria Rodriguez",
+      "instructorEmail": "maria.rodriguez@example.com",
+      "availableSeats": 18,
+      "price": 110,
+      "duration": 75,
+      "classStatus": "approved"
+    },
+    {
+      "_id": "10",
+      "className": "Clarinet",
+      "classImage": "https://i.ibb.co/zfrcx0b/instrument-4118588-1280.jpg",
+      "instructorName": "Alex Turner",
+      "instructorEmail": "alex.turner@example.com",
+      "availableSeats": 10,
+      "price": 180,
+      "duration": 120,
+      "classStatus": "approved"
+    }
+  ]
+  

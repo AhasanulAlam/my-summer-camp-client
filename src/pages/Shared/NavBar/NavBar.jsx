@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const NavBar = () => {
     const navElements = <>
         <li><Link to='/'>Home</Link></li>
-        <li><a>Parent</a></li>
+        <li><Link to='/classes'>Classes</Link></li>
         <li><a>Item 3</a></li>
     </>
     return (

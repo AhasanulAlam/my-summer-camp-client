@@ -2,7 +2,7 @@ import { FaMusic } from "react-icons/fa";
 import { Link } from "react-router-dom";
 const NavBar = () => {
     const navElements = <>
-        <li><a>Home</a></li>
+        <li><Link to='/'>Home</Link></li>
         <li><a>Parent</a></li>
         <li><a>Item 3</a></li>
     </>

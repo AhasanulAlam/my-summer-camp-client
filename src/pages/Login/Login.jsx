@@ -1,14 +1,16 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Lottie from "lottie-react";
 import MelodyTuneLogin from '../../assets/MelodyTuneLogin.json';
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Login = () => {
     const [showHidePass, setShowHidePass] = useState(false);
+    const { signIn } = useContext(AuthContext);
 
-    const handleLogin = (event) =>{
+    const handleLogin = (event) => {
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
@@ -16,6 +18,15 @@ const Login = () => {
         const confirm = form.confirm.value;
 
         console.log(email, password, confirm);
+        if (password !== confirm) {
+            return;
+        } else {
+            signIn(email, password)
+                .then(result => {
+                    const user = result.user;
+                    console.log('Logged in User:', user);
+                })
+        }
 
     }
     return (
@@ -26,7 +37,7 @@ const Login = () => {
             </Helmet>
             <div className="">
                 <div className="hero min-h-screen bg-base-200 flex flex-col md:flex-row gap-12 md:justify-center">
-                <div className='max-w-xl text-center'>
+                    <div className='max-w-xl text-center'>
                         <Lottie animationData={MelodyTuneLogin} loop={true} />
                     </div>
                     <div className="hero-content flex-col ">
@@ -71,11 +82,11 @@ const Login = () => {
                             <div className='divider'></div>
 
                             <div className="form-control mb-2 ">
-                                <button  className='btn btn-active btn-link'> <FaGoogle className='text-green-600 text-2xl' /> <span className='mx-2'> Login with Google</span></button>
+                                <button className='btn btn-active btn-link'> <FaGoogle className='text-green-600 text-2xl' /> <span className='mx-2'> Login with Google</span></button>
                             </div>
                         </div>
                     </div>
-                                        
+
                 </div>
             </div>
         </>

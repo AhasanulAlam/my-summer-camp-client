@@ -17,10 +17,10 @@ const ErrorPage = () => {
                         <span className='sr-only'>Error</span>
                         {status || 404}
                     </h2>
-                    <p className='text-2xl font-semibold md:text-3xl text-indigo-600 mb-8'>
+                    <p className='text-2xl font-semibold md:text-3xl text-pink-500 mb-8'>
                         {error?.message}
                     </p>
-                    <Link to='/' className='btn btn-info text-white'>
+                    <Link to='/' className='btn btn-outline btn-secondary border border-l-4 border-r-4'>
                         Back to homepage
                     </Link>
                 </div>

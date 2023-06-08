@@ -1,20 +1,38 @@
 import { createContext, useEffect, useState } from "react";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { app } from "../../../../../ProjectFinal/bistro-boss-client/src/firebase/firebase.config";
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import app from "../firebase/firebase.config";
+
 
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
-    const [loading, SetLoading] = useState(true);
+    const [loading, setLoading] = useState(true);
 
+    // Create New User
+    const createUser = (email, password) => {
+        setLoading(true);
+        return createUserWithEmailAndPassword(auth, email, password);
+    }
+
+    // signIn user
+    const signIn = (email, password) => {
+        setLoading(true);
+        return signInWithEmailAndPassword(auth, email, password);
+    }
+
+    // logOut user
+    const logOut = () => {
+        setLoading(true);
+        return signOut(auth);
+    }
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
-            console.log('Current User:', currentUser);
-            SetLoading(false);
+            console.log('Current User details:', currentUser);
+            setLoading(false);
         });
         return () => {
             return unsubscribe();
@@ -24,6 +42,9 @@ const AuthProvider = ({ children }) => {
     const authInfo = {
         user,
         loading,
+        createUser,
+        signIn,
+        logOut
     }
     return (
         <AuthContext.Provider value={authInfo}>

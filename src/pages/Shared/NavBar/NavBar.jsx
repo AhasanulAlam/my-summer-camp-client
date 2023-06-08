@@ -8,8 +8,8 @@ const NavBar = () => {
 
     const handleLogout = () => {
         logOut()
-        .then(()=>{})
-        .catch(error => console.error(error))
+            .then(() => { })
+            .catch(error => console.error(error))
     }
 
     const navElements = <>
@@ -48,6 +48,11 @@ const NavBar = () => {
 
                     {
                         user ? <>
+                            <div className="avatar mr-2">
+                                <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                                    <img src={user.photoURL} title={user.displayName}/>
+                                </div>
+                            </div>
                             <button onClick={handleLogout} className="btn btn-outline btn-primary">LogOut</button>
                         </> : <>
                             <Link to='/login'><button className="btn btn-outline btn-primary">Login</button></Link>

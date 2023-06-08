@@ -1,6 +1,17 @@
+import { useContext } from "react";
 import { FaMusic } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../providers/AuthProvider";
+
 const NavBar = () => {
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogout = () => {
+        logOut()
+        .then(()=>{})
+        .catch(error => console.error(error))
+    }
+
     const navElements = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/classes'>Classes</Link></li>
@@ -34,7 +45,14 @@ const NavBar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <Link to='/login'><button className="btn btn-outline btn-primary">Login</button></Link>
+
+                    {
+                        user ? <>
+                            <button onClick={handleLogout} className="btn btn-outline btn-primary">LogOut</button>
+                        </> : <>
+                            <Link to='/login'><button className="btn btn-outline btn-primary">Login</button></Link>
+                        </>
+                    }
                 </div>
             </div>
 

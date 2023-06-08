@@ -1,34 +1,52 @@
 import { useContext, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Lottie from "lottie-react";
 import MelodyTuneLogin from '../../assets/MelodyTuneLogin.json';
 import { AuthContext } from "../../providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const Login = () => {
     const [showHidePass, setShowHidePass] = useState(false);
     const { signIn } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
 
     const handleLogin = (event) => {
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        const confirm = form.confirm.value;
 
-        console.log(email, password, confirm);
-        if (password !== confirm) {
-            return;
-        } else {
-            signIn(email, password)
-                .then(result => {
-                    const user = result.user;
-                    console.log('Logged in User:', user);
+        console.log(email, password);
+
+        signIn(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log('Logged in User:', user);
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'User Login Successful!',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                navigate(from, { replace: true });
+            })
+            .catch(error => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'email / password wrong!',
+                    footer: error.message
                 })
-        }
+                form.reset();
+            })
 
     }
+
     return (
         <>
             <Helmet>

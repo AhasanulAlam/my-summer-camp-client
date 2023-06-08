@@ -4,6 +4,7 @@ const NavBar = () => {
     const navElements = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/classes'>Classes</Link></li>
+        <li><Link to='/login'>Login</Link></li>
         <li><a>Item 3</a></li>
     </>
     return (
@@ -34,7 +35,7 @@ const NavBar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn">Button</a>
+                    <Link to='/login'><button className="btn btn-outline btn-primary">Login</button></Link>
                 </div>
             </div>
 

@@ -2,9 +2,11 @@ import { useContext } from "react";
 import { FaCartPlus, FaMusic } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
+import useCart from "../../../hooks/useCart";
 
 const NavBar = () => {
     const { user, logOut } = useContext(AuthContext);
+    const [cart] = useCart();
 
     const handleLogout = () => {
         logOut()
@@ -51,7 +53,7 @@ const NavBar = () => {
                         user ? <>
                             <button className="btn btn-ghost md:mr-2">
                                 <FaCartPlus className="text-2xl text-indigo-500"></FaCartPlus>
-                                <div className="badge badge-secondary badge-outline">+0</div>
+                                <div className="badge badge-secondary badge-outline">+{cart?.length || 0}</div>
                             </button>
                             <div className="avatar mr-2">
                                 <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">

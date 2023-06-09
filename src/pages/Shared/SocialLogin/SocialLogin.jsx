@@ -5,25 +5,25 @@ import { AuthContext } from "../../../providers/AuthProvider";
 
 const SocialLogin = () => {
     const location = useLocation();
+    const navigate = useNavigate();
     const togglePageLogin = location.pathname.includes('login');
 
-    const { googleSignIn } = useContext(AuthContext);
-    const navigate = useNavigate();
-
     const from = location.state?.from?.pathname || "/";
+    
+    const { googleSignIn } = useContext(AuthContext);
 
     const handleGoogleSignIn = () => {
         googleSignIn()
             .then(result => {
                 const loggedInUser = result.user;
                 console.log(loggedInUser);
-                const saveUser = { name: loggedInUser.displayName, email: loggedInUser.email }
+                const saveUpdatedUser = { name: loggedInUser.displayName, email: loggedInUser.email }
                 fetch(`http://localhost:5000/users`, {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
                     },
-                    body: JSON.stringify(saveUser)
+                    body: JSON.stringify(saveUpdatedUser)
                 })
                     .then(res => res.json())
                     .then(() => {

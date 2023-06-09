@@ -15,25 +15,40 @@ const SignUp = () => {
     const navigate = useNavigate();
 
     const onSubmit = data => {
-        console.log(data);
         createUser(data.email, data.password)
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
+                // Update User Profile to firebase
                 updateUserProfile(data.name, data.photoURL)
-                .then(()=>{
-                    console.log('update user profile');
-                    reset();
-                    Swal.fire({
-                        position: 'center',
-                        icon: 'success',
-                        title: 'User created Successfully!',
-                        showConfirmButton: false,
-                        timer: 1500
-                    });
-                    navigate('/');
-                })
-                .catch(error => console.error(error))
+                    .then(() => {
+                        // Call API for insert user data in the database
+                        const saveUpdatedUser = { name: data.name, email: data.email }
+                        fetch(`http://localhost:5000/users`, {
+                            method: 'POST',
+                            headers: {
+                                'content-type': 'application/json'
+                            },
+                            body: JSON.stringify(saveUpdatedUser)
+
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data.insertedId) {
+                                    reset();
+                                    Swal.fire({
+                                        position: 'center',
+                                        icon: 'success',
+                                        title: 'User created Successfully!',
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    });
+                                    navigate('/');
+
+                                }
+                            })
+                    })
+                    .catch(error => console.error(error))
             })
     };
 

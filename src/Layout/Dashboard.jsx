@@ -1,7 +1,9 @@
 import { FaCartPlus, FaHome, FaMusic, FaStackOverflow, FaUsers } from "react-icons/fa";
-import { NavLink, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
+import useCart from "../hooks/useCart";
 
 const Dashboard = () => {
+    const [cart] = useCart();
     return (
         <>
             <div className="drawer lg:drawer-open">
@@ -15,9 +17,24 @@ const Dashboard = () => {
                 <div className="drawer-side bg-indigo-400">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 h-full">
+                        <Link to="/" className="btn btn-ghost normal-case text-xl">
+                            <p className="md:flex md:items-center">
+                                <span><FaMusic className="text-lime-500 text-3xl"></FaMusic></span>
+                                <span className="text-xs md:text-base">
+                                    <span className="text-indigo-500 font-bold text-2xl ml-1">M</span>elody
+                                    <span className="text-pink-500 font-bold text-2xl">T</span>une
+                                </span>
+                            </p>
+                        </Link>
+                        <div className="divider"></div>
                         {/* Sidebar content here */}
                         <li><NavLink to='/dashboard/studentHome'><FaHome></FaHome>Student Home</NavLink></li>
-                        <li><NavLink to="/dashboard/mycart"><FaCartPlus></FaCartPlus>My Selected Classes</NavLink></li>
+                        <li>
+                            <NavLink to="/dashboard/mycart"><FaCartPlus></FaCartPlus>
+                                My Selected Classes
+                                <span className="badge badge-secondary badge-outline">+{cart?.length || 0}</span>
+                            </NavLink>
+                        </li>
                         <li><NavLink to="/dashboard/myEnrolledClass"><FaStackOverflow></FaStackOverflow>My Enrolled Classes</NavLink></li>
                         <div className="divider"></div>
                         <li><NavLink to="/"><FaHome></FaHome>Home</NavLink></li>

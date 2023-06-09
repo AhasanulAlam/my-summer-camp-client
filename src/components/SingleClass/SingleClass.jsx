@@ -30,6 +30,7 @@ const SingleClass = ({ singleClass }) => {
                             position: 'center',
                             icon: 'success',
                             title: `${className} Class added in the Cart successfully!`,
+                            text: "Please click on your cart number to proceed payment!",
                             showConfirmButton: false,
                             timer: 1500
                         })

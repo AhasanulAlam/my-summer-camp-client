@@ -51,10 +51,12 @@ const NavBar = () => {
 
                     {
                         user ? <>
-                            <button className="btn btn-ghost md:mr-2">
-                                <FaCartPlus className="text-2xl text-indigo-500"></FaCartPlus>
-                                <div className="badge badge-secondary badge-outline">+{cart?.length || 0}</div>
-                            </button>
+                            <Link to="/dashboard/mycart">
+                                <button className="btn btn-ghost md:mr-2">
+                                    <FaCartPlus className="text-2xl text-indigo-500"></FaCartPlus>
+                                    <div className="badge badge-secondary badge-outline">+{cart?.length || 0}</div>
+                                </button>
+                            </Link>
                             <div className="avatar mr-2">
                                 <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                                     <img src={user.photoURL} title={user.displayName} />

@@ -1,4 +1,5 @@
-import { Outlet } from "react-router-dom";
+import { FaCartPlus, FaHome, FaMusic, FaStackOverflow, FaUsers } from "react-icons/fa";
+import { NavLink, Outlet } from "react-router-dom";
 
 const Dashboard = () => {
     return (
@@ -11,12 +12,17 @@ const Dashboard = () => {
                     <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
 
                 </div>
-                <div className="drawer-side">
+                <div className="drawer-side bg-indigo-400">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
+                    <ul className="menu p-4 w-80 h-full">
                         {/* Sidebar content here */}
-                        <li><a>Sidebar Item 1</a></li>
-                        <li><a>Sidebar Item 2</a></li>
+                        <li><NavLink to='/dashboard/studentHome'><FaHome></FaHome>Student Home</NavLink></li>
+                        <li><NavLink to="/dashboard/mycart"><FaCartPlus></FaCartPlus>My Selected Classes</NavLink></li>
+                        <li><NavLink to="/dashboard/myEnrolledClass"><FaStackOverflow></FaStackOverflow>My Enrolled Classes</NavLink></li>
+                        <div className="divider"></div>
+                        <li><NavLink to="/"><FaHome></FaHome>Home</NavLink></li>
+                        <li><NavLink to='/classes'><FaMusic></FaMusic>Classes</NavLink></li>
+                        <li><NavLink to='/instructors'><FaUsers></FaUsers>Instructors</NavLink></li>
                     </ul>
 
                 </div>

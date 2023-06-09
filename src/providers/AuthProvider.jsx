@@ -9,7 +9,7 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
-    
+
     // Google Provider
     const googleProvider = new GoogleAuthProvider();
 
@@ -48,6 +48,12 @@ const AuthProvider = ({ children }) => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
             console.log('Current User details:', currentUser);
+
+            // Get and Set JWT token
+
+
+
+
             setLoading(false);
         });
         return () => {

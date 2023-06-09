@@ -9,13 +9,14 @@ import Instructors from "../pages/Instructors/Instructors";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Layout/Dashboard";
 import MyCart from "../pages/Dashboard/MyCart/MyCart";
+import ManageUsers from "../pages/Dashboard/ManageUsers/ManageUsers";
 
 export const router = createBrowserRouter([
     {
         path: "/",
         element: <Main></Main>,
         errorElement: <ErrorPage></ErrorPage>,
-        children:[
+        children: [
             {
                 path: '/',
                 element: <Home></Home>
@@ -44,8 +45,12 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: 'mycart',
-            element: <MyCart></MyCart>
-            }
+                element: <MyCart></MyCart>
+            },
+            {
+                path: 'manageusers',
+                element: <ManageUsers></ManageUsers>
+            },
         ]
     }
 ]);

@@ -13,6 +13,7 @@
     "@egjs/react-flicking": "^4.10.9",
     "@lottiefiles/lottie-player": "^1.7.1",
     "@tanstack/react-query": "^4.29.12",
+    "axios": "^1.4.0",
     "firebase": "^9.22.1",
     "localforage": "^1.10.0",
     "lottie-react": "^2.4.0",

@@ -6,6 +6,7 @@ import Lottie from "lottie-react";
 import MelodyTuneLogin from '../../assets/MelodyTuneLogin.json';
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
+import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 
 const Login = () => {
     const [showHidePass, setShowHidePass] = useState(false);
@@ -95,10 +96,8 @@ const Login = () => {
                             <div className="form-control label">
                                 <p><small>New Here? <Link className='text-purple-400 font-bold' to="/signup">Create an Account</Link></small></p>
                             </div>
-                            <div className='divider'></div>
-
                             <div className="form-control mb-2 ">
-                                <button className='btn btn-active btn-link'> <FaGoogle className='text-green-600 text-2xl' /> <span className='mx-2'> Login with Google</span></button>
+                                <SocialLogin></SocialLogin>
                             </div>
                         </div>
                     </div>

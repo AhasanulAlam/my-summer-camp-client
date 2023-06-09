@@ -7,6 +7,7 @@ import { FaGoogle } from "react-icons/fa";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
+import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 
 
 const SignUp = () => {
@@ -116,10 +117,8 @@ const SignUp = () => {
                             <div className="form-control label">
                                 <p><small>Already have an Account? <Link className='text-purple-400 font-bold' to="/login">Login</Link></small></p>
                             </div>
-                            <div className='divider'></div>
-
                             <div className="form-control mb-2 ">
-                                <button className='btn btn-active btn-link'> <FaGoogle className='text-green-600 text-2xl' /> <span className='mx-2'> SignUp with Google</span></button>
+                                <SocialLogin></SocialLogin>
                             </div>
                         </div>
                     </div>

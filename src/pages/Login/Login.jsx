@@ -1,6 +1,5 @@
 import { useContext, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Lottie from "lottie-react";
 import MelodyTuneLogin from '../../assets/MelodyTuneLogin.json';

@@ -3,7 +3,6 @@ import { Helmet } from "react-helmet-async";
 import Lottie from "lottie-react";
 import MelodyTuneLogin from '../../assets/MelodyTuneRegistration.json';
 import { Link, useNavigate } from "react-router-dom";
-import { FaGoogle } from "react-icons/fa";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";

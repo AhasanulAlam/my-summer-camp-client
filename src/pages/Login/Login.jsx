@@ -54,7 +54,7 @@ const Login = () => {
                 <link rel="canonical" href="https://www.tacobell.com/" />
             </Helmet>
             <div className="">
-                <div className="hero min-h-screen bg-base-200 flex flex-col md:flex-row gap-12 md:justify-center">
+                <div className="hero min-h-screen bg-indigo-100 flex flex-col md:flex-row gap-12 md:justify-center mb-4">
                     <div className='max-w-xl text-center'>
                         <Lottie animationData={MelodyTuneLogin} loop={true} />
                     </div>

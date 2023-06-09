@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { FaMusic } from "react-icons/fa";
+import { FaCartPlus, FaMusic } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
 
@@ -16,6 +16,7 @@ const NavBar = () => {
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/classes'>Classes</Link></li>
         <li><Link to='/instructors'>Instructors</Link></li>
+        <li><Link to='/dashboard'>Dashboard</Link></li>
     </>
     return (
         <>
@@ -48,9 +49,13 @@ const NavBar = () => {
 
                     {
                         user ? <>
+                            <button className="btn btn-ghost md:mr-2">
+                                <FaCartPlus className="text-2xl text-indigo-500"></FaCartPlus>
+                                <div className="badge badge-secondary badge-outline">+0</div>
+                            </button>
                             <div className="avatar mr-2">
                                 <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                                    <img src={user.photoURL} title={user.displayName}/>
+                                    <img src={user.photoURL} title={user.displayName} />
                                 </div>
                             </div>
                             <button onClick={handleLogout} className="btn btn-outline btn-primary">LogOut</button>

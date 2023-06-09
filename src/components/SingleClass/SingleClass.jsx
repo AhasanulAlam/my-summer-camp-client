@@ -1,6 +1,47 @@
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
+import Swal from "sweetalert2";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const SingleClass = ({ singleClass }) => {
     const { className, classImage, instructorName, instructorEmail, availableSeats, price, duration } = singleClass;
+    const {user} = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const handleAddToCart = (singleClass) =>{
+        console.log(singleClass);
+        if(user){
+            fetch(`http://localhost:5000/carts`,{})
+            .then(res => res.json())
+            .then(data => {
+                if(data.insertedId){
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: `${className} Class added in the Cart successfully!`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            })
+        }else{
+            Swal.fire({
+                title: 'Please login to Enroll the Class!',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Please Login Now!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    navigate('/login', { state: { from: location } })
+                }
+            })
+
+        }
+    }
+
     return (
         <>
             <div className="card w-auto bg-base-100 shadow-xl">
@@ -13,7 +54,7 @@ const SingleClass = ({ singleClass }) => {
                     <p>Price: ${price}</p>
                     <p>Duration: {duration} Days</p>
                     <div className="card-actions justify-center">
-                        <button className="btn btn-outline btn-secondary border border-l-4 border-r-4">Enroll Now</button>
+                        <button onClick={()=>handleAddToCart(singleClass)} className="btn btn-outline btn-secondary border border-l-4 border-r-4">Enroll Now</button>
                     </div>
                 </div>
             </div>

@@ -4,14 +4,12 @@ import { FaRegTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
-
 const ManageUsers = () => {
     const [axiosSecure] = useAxiosSecure();
     const { data: users = [], refetch } = useQuery(['users'], async () => {
         const res = await axiosSecure.get(`/users`)
         return res.data;
     })
-
 
     const handleMakeAdmin = (user) => {
         fetch(`http://localhost:5000/users/admin/${user._id}`, {
@@ -63,6 +61,10 @@ const ManageUsers = () => {
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
+            if(user.email === 1){
+                console.log(user._id);
+            }
+
             if (result.isConfirmed) {
                 axiosSecure.delete(`/users/${user._id}`)
                     .then(res => {
@@ -84,7 +86,7 @@ const ManageUsers = () => {
     return (
         <div className="w-full">
             <Helmet>
-                <title>Melody Tune | My Selected Classes</title>
+                <title>Melody Tune | Dashboard | Manage Users</title>
                 <link rel="canonical" href="https://www.tacobell.com/" />
             </Helmet>
             <div>

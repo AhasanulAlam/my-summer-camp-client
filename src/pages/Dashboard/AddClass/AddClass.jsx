@@ -1,13 +1,16 @@
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import useAuth from "../../../hooks/useAuth";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 
 const image_hosting_token = import.meta.env.VITE_Image_Upload_Token;
 
 const AddClass = () => {
-    const {user} = useAuth();
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { user } = useAuth();
+    const [axiosSecure] = useAxiosSecure();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const image_hosting_url = `https://api.imgbb.com/1/upload?key=${image_hosting_token}`;
 
     const onSubmit = data => {
@@ -19,29 +22,43 @@ const AddClass = () => {
             method: 'POST',
             body: formData
         })
-        .then(res => res.json())
-        .then(imageResponse => {
-            console.log(imageResponse);
-            if(imageResponse.success){
-                const imageURL = imageResponse.data.display_url;
-                const{className, availableSeats, price, duration } = data;
-                const newClass = {
-                    className,
-                    classImage: imageURL,
-                    instructorName: user.displayName,
-                    instructorEmail: user.email,
-                    availableSeats,
-                    price,
-                    duration,
-                    classStatus: 'pending'
+            .then(res => res.json())
+            .then(imageResponse => {
+                console.log(imageResponse);
+                if (imageResponse.success) {
+                    const imageURL = imageResponse.data.display_url;
+                    const { className, availableSeats, price, duration } = data;
+                    const newClass = {
+                        className,
+                        classImage: imageURL,
+                        instructorName: user.displayName,
+                        instructorEmail: user.email,
+                        availableSeats: parseInt(availableSeats),
+                        price: parseFloat(price),
+                        duration: parseInt(duration),
+                        classStatus: 'pending'
+                    }
+                    console.log(newClass);
+
+                    axiosSecure.post('/classes', newClass)
+                        .then(data => {
+                            if (data.data.insertedId) {
+                                reset();
+                                Swal.fire({
+                                    position: 'center',
+                                    icon: 'success',
+                                    title: `${className} class added successfully!`,
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                })
+                            }
+                        })
                 }
-                console.log(newClass);
-            }
-        })
+            })
     };
 
     console.log(errors);
-    
+
     return (
         <div className="w-full px-10">
             <Helmet>
@@ -86,7 +103,7 @@ const AddClass = () => {
                             </label>
                             <input type="file" {...register("classImage", { required: true })}
                                 className="file-input file-input-bordered file-input-info w-full max-w-xs" />
-                                {errors.classImage && <span className="text-red-500 text-xs">Class Image is required!</span>}
+                            {errors.classImage && <span className="text-red-500 text-xs">Class Image is required!</span>}
                         </div>
                     </div>
                     <div className="md:flex md:gap-8 md:justify-around  ">

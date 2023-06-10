@@ -1,15 +1,13 @@
 import { Navigate, useLocation } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
-import useAdmin from "../hooks/useAdmin";
+import useInstructor from "../hooks/useInstructor";
 
-
-const AdminRoute = ({ children }) => {
+const InstructorRoute = ({ children }) => {
     const { user, loading } = useAuth();
-    const [isAdmin, isAdminLoading] = useAdmin();
+    const [isInstructor, isInstructorLoading] = useInstructor();
     const location = useLocation();
 
-
-    if (loading || isAdminLoading) {
+    if (loading || isInstructorLoading) {
         return <>
             <div className="text-center my-20">
                 <span className="loading loading-spinner text-primary"></span>
@@ -23,12 +21,10 @@ const AdminRoute = ({ children }) => {
             </div>
         </>
     }
-
-    if (user && isAdmin) {
+    if (user && isInstructor) {
         return children;
     }
-
     return <Navigate to="/" state={{ from: location }} replace ></Navigate>
 };
 
-export default AdminRoute;
+export default InstructorRoute;

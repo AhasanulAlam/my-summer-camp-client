@@ -3,6 +3,7 @@ import { Link, NavLink, Outlet } from "react-router-dom";
 import useCart from "../hooks/useCart";
 import useAdmin from "../hooks/useAdmin";
 import useInstructor from "../hooks/useInstructor";
+import { Helmet } from "react-helmet-async";
 
 const Dashboard = () => {
     const [cart] = useCart();
@@ -14,6 +15,10 @@ const Dashboard = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Melody Tune | Dashboard</title>
+                <link rel="canonical" href="https://www.tacobell.com/" />
+            </Helmet>
             <div className="drawer lg:drawer-open">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content flex flex-col items-center justify-center">

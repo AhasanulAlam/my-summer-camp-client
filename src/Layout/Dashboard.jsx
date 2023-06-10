@@ -2,12 +2,15 @@ import { FaCartPlus, FaClipboardList, FaHome, FaMusic, FaStackOverflow, FaUsers,
 import { Link, NavLink, Outlet } from "react-router-dom";
 import useCart from "../hooks/useCart";
 import useAdmin from "../hooks/useAdmin";
+import useInstructor from "../hooks/useInstructor";
 
 const Dashboard = () => {
     const [cart] = useCart();
 
     // Calling for Admin Hook to check admin user
     const [isAdmin] = useAdmin();
+    // Calling for Instructor Hook to check Instructor user
+    const [isInstructor] = useInstructor();
 
     return (
         <>
@@ -45,19 +48,32 @@ const Dashboard = () => {
                                     </li>
                                     <li>
                                         <NavLink to="/dashboard/manageusers"><FaUsersCog></FaUsersCog>Manage Users</NavLink>
-                                        </li>
-                                </>
-                                : <>
-                                    <li><NavLink to='/dashboard/studenthome'><FaHome></FaHome>Student Home</NavLink></li>
-                                    <li>
-                                        <NavLink to="/dashboard/mycart"><FaCartPlus></FaCartPlus>
-                                            My Selected Classes
-                                            <span className="badge badge-secondary badge-outline">+{cart?.length || 0}</span>
-                                        </NavLink>
                                     </li>
-                                    <li><NavLink to="/dashboard/myEnrolledClass"><FaStackOverflow></FaStackOverflow>My Enrolled Classes</NavLink></li>
-
                                 </>
+                                : isInstructor ?
+                                    <>
+                                        <li>
+                                            <NavLink to='/dashboard/instructorhome'><FaHome></FaHome>Admin Home</NavLink>
+                                        </li>
+                                        <li>
+                                            <NavLink to="/dashboard/addclass"><FaClipboardList></FaClipboardList>Add A Class</NavLink>
+                                        </li>
+                                        <li>
+                                            <NavLink to="/dashboard/myclasses:"><FaUsersCog></FaUsersCog>My Classes</NavLink>
+                                        </li>
+
+                                    </>
+                                    : <>
+                                        <li><NavLink to='/dashboard/studenthome'><FaHome></FaHome>Student Home</NavLink></li>
+                                        <li>
+                                            <NavLink to="/dashboard/mycart"><FaCartPlus></FaCartPlus>
+                                                My Selected Classes
+                                                <span className="badge badge-secondary badge-outline">+{cart?.length || 0}</span>
+                                            </NavLink>
+                                        </li>
+                                        <li><NavLink to="/dashboard/myEnrolledClass"><FaStackOverflow></FaStackOverflow>My Enrolled Classes</NavLink></li>
+
+                                    </>
                         }
 
                         <div className="divider"></div>

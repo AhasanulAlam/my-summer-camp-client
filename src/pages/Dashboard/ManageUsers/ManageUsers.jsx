@@ -33,6 +33,26 @@ const ManageUsers = () => {
 
     }
 
+    const handleMakeInstructor = (user) =>{
+        fetch(`http://localhost:5000/users/instructor/${user._id}`, {
+            method: 'PATCH'
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount) {
+                    refetch();
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: `${user.name} is became an Instructor Now!`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            })
+
+    }
+
     const handleDeleteUser = (user) => {
         Swal.fire({
             title: 'Are you sure?',
@@ -77,7 +97,8 @@ const ManageUsers = () => {
                                 <th>#</th>
                                 <th>Name</th>
                                 <th>Email</th>
-                                <th>Role</th>
+                                <th>Role Admin</th>
+                                <th>Role Instructor</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -91,7 +112,13 @@ const ManageUsers = () => {
                                     <td>
                                         {
                                             user.role === 'admin' ? 'admin' :
-                                                <button onClick={() => handleMakeAdmin(user)} className="btn btn-outline btn-primary btn-xs">Admin</button>
+                                                <button disabled={user.role === 'instructor' && true}  onClick={() => handleMakeAdmin(user)} className="btn btn-outline btn-primary btn-xs">Admin</button>
+                                        }
+                                    </td>
+                                    <td>
+                                        {
+                                            user.role === 'instructor' ? 'instructor' :
+                                                <button disabled={user.role === 'admin' && true} onClick={() => handleMakeInstructor(user)} className="btn btn-outline btn-primary btn-xs">Instructor</button>
                                         }
                                     </td>
                                     <td><button onClick={() => handleDeleteUser(user)} className="btn btn-error btn-sm"><FaRegTrashAlt className="text-white"></FaRegTrashAlt> </button></td>

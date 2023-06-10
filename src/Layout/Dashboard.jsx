@@ -1,12 +1,13 @@
 import { FaCartPlus, FaClipboardList, FaHome, FaMusic, FaStackOverflow, FaUsers, FaUsersCog } from "react-icons/fa";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import useCart from "../hooks/useCart";
+import useAdmin from "../hooks/useAdmin";
 
 const Dashboard = () => {
     const [cart] = useCart();
 
-    // TODO: Load Dynamically isAdmin from DataBase
-    const isAdmin = true;
+    // Calling for Admin Hook to check admin user
+    const [isAdmin] = useAdmin();
 
     return (
         <>

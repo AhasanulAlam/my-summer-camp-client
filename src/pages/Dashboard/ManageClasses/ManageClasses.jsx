@@ -1,8 +1,21 @@
 import { Helmet } from "react-helmet-async";
-import useClasses from "../../../hooks/useClasses";
+import useClassesToManage from "../../../hooks/useClassesToManage";
 
 const ManageClasses = () => {
-    const [classes] = useClasses();
+    const [classes] = useClassesToManage();
+
+    const handleApproveClass = (id) =>{
+        console.log(id);
+        // TODO: Update the class Status
+    
+    }
+    const handleDenyClass = (id) =>{
+        console.log(id);
+        // TODO: Update the class Status
+    }
+
+
+
 
     return (
         <div className="w-full">
@@ -51,11 +64,11 @@ const ManageClasses = () => {
                                     <td> {singleClass.classStatus} </td>
                                     <th>
                                         {
-                                            <button disabled={singleClass.classStatus === 'approved' && true} className="btn btn-success btn-xs">Approve</button>
+                                            <button onClick={(()=>handleApproveClass(singleClass._id))} disabled={singleClass.classStatus === 'approved' && true} className="btn btn-success btn-xs">Approve</button>
                                         }
                                     </th>
                                     <th>
-                                        <button disabled={singleClass.classStatus === 'approved' && true} className="btn btn-error btn-xs">Deny</button>
+                                        <button onClick={(()=>handleDenyClass(singleClass._id))} disabled={singleClass.classStatus === 'approved' && true} className="btn btn-error btn-xs">Deny</button>
                                     </th>
                                 </tr>
                                 )

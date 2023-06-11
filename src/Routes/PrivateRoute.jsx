@@ -18,7 +18,7 @@ const PrivateRoute = ({ children }) => {
                 <span className="loading loading-spinner text-success"></span>
                 <span className="loading loading-spinner text-warning"></span>
                 <span className="loading loading-spinner text-error"></span>
-                <span className="">Private Route</span>
+                <span className="text-gray-300">Private Route</span>
             </div>
         </>
     }

@@ -18,6 +18,8 @@ import Payment from "../pages/Dashboard/Payment/Payment";
 import AdminHome from "../pages/Dashboard/AdminHome/AdminHome";
 import InstructorHome from "../pages/Dashboard/InstructorHome/InstructorHome";
 import StudentHome from "../pages/Dashboard/StudentHome/StudentHome";
+import MyEnrolledClass from "../pages/Dashboard/MyEnrolledClass/MyEnrolledClass";
+import InstructorsClass from "../pages/Dashboard/InstructorsClass/InstructorsClass";
 
 export const router = createBrowserRouter([
     {
@@ -60,12 +62,20 @@ export const router = createBrowserRouter([
                 element: <InstructorRoute><InstructorHome></InstructorHome></InstructorRoute>
             },
             {
+                path: 'instructorclasses',
+                element: <InstructorRoute><InstructorsClass></InstructorsClass></InstructorRoute>
+            },
+            {
                 path: 'studenthome',
                 element: <StudentHome></StudentHome>
             },
             {
                 path: 'mycart',
                 element: <MyCart></MyCart>
+            },
+            {
+                path: 'myEnrolledClass',
+                element: <MyEnrolledClass></MyEnrolledClass>
             },
             {
                 path: 'payment',

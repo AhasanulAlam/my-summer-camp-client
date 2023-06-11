@@ -1,8 +1,9 @@
 import { useContext } from "react";
-import { FaCartPlus, FaMusic } from "react-icons/fa";
+// import { FaCartPlus, FaMusic } from "react-icons/fa";
+import { FaMusic } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
-import useCart from "../../../hooks/useCart";
+// import useCart from "../../../hooks/useCart";
 import useAdmin from "../../../hooks/useAdmin";
 import useInstructor from "../../../hooks/useInstructor";
 
@@ -11,7 +12,7 @@ const NavBar = () => {
     const [isAdmin] = useAdmin();
     const [isInstructor] = useInstructor();
 
-    const [cart] = useCart();
+    // const [cart] = useCart();
 
 
     const handleLogout = () => {
@@ -59,12 +60,12 @@ const NavBar = () => {
 
                     {
                         user ? <>
-                            <Link to="/dashboard/mycart">
+                            {/* <Link to="/dashboard/mycart">
                                 <button className="btn btn-ghost md:mr-2">
                                     <FaCartPlus className="text-2xl text-indigo-500"></FaCartPlus>
                                     <div className="badge badge-secondary badge-outline">+{cart?.length || 0}</div>
                                 </button>
-                            </Link>
+                            </Link> */}
                             <div className="avatar mr-2">
                                 <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                                     <img src={user.photoURL} title={user.displayName} />

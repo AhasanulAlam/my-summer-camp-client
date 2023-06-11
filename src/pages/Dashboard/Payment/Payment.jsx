@@ -8,7 +8,6 @@ import useCart from "../../../hooks/useCart";
 const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_PK);
 const Payment = () => {
     const [cart] = useCart();
-    console.log(cart);
     const total = cart.reduce( ( accumulator , classItem ) => accumulator + classItem.price, 0);
     const price = parseFloat(total.toFixed(2));
 

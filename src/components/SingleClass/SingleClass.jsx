@@ -34,6 +34,7 @@ const SingleClass = ({ singleClass }) => {
                             showConfirmButton: false,
                             timer: 1500
                         })
+                        navigate('/dashboard/mycart');
                     }
                 })
         } else {
@@ -57,15 +58,15 @@ const SingleClass = ({ singleClass }) => {
         <>
             <div className="card w-auto bg-base-100 shadow-xl">
                 <figure><img src={classImage} alt="Class Image" /></figure>
-                <div className="card-body">
+                <div className={`card-body ${availableSeats < 1 && "bg-red-400"}`}>
                     <h2 className="card-title text-indigo-600">{className}</h2>
                     <p>Instructor: {instructorName}</p>
                     <p className="text-sm">Email: {instructorEmail}</p>
-                    <p className="font-semibold">Available Seats: {availableSeats}</p>
+                    <p className={`font-semibold text-green-600 ${availableSeats < 1 && "text-red-600"}`}>Available Seats: {availableSeats}</p>
                     <p>Price: ${price}</p>
                     <p>Duration: {duration} Days</p>
                     <div className="card-actions justify-center">
-                        <button onClick={() => handleAddToCart(singleClass)} className="btn btn-outline btn-secondary border border-l-4 border-r-4">Enroll Now</button>
+                        <button disabled={availableSeats < 1 && true} onClick={() => handleAddToCart(singleClass)} className="btn btn-outline btn-secondary border border-l-4 border-r-4">Enroll Now</button>
                     </div>
                 </div>
             </div>

@@ -16,8 +16,9 @@ const SocialLogin = () => {
         googleSignIn()
             .then(result => {
                 const loggedInUser = result.user;
-                console.log(loggedInUser);
-                const saveUpdatedUser = { name: loggedInUser.displayName, email: loggedInUser.email }
+                console.log('Google logged User',loggedInUser);
+                // Call API for insert user data in the database
+                const saveUpdatedUser = { name: loggedInUser.displayName, email: loggedInUser.email, image: loggedInUser.photoURL }
                 fetch(`http://localhost:5000/users`, {
                     method: 'POST',
                     headers: {

@@ -18,13 +18,14 @@ const InstructorRoute = ({ children }) => {
                 <span className="loading loading-spinner text-success"></span>
                 <span className="loading loading-spinner text-warning"></span>
                 <span className="loading loading-spinner text-error"></span>
+                <span className="">Instructor Route</span>
             </div>
         </>
     }
     if (user && isInstructor) {
         return children;
     }
-    return <Navigate to="/" state={{ from: location }} replace ></Navigate>
+    return <Navigate to="/" state={{ from: location }} replace></Navigate>
 };
 
 export default InstructorRoute;

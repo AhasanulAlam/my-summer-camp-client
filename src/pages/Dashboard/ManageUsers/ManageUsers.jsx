@@ -68,7 +68,7 @@ const ManageUsers = () => {
             if (result.isConfirmed) {
                 axiosSecure.delete(`/users/${user._id}`)
                     .then(res => {
-                        console.log('Deleted response', res.data);
+                        // console.log('Deleted response', res.data);
                         if (res.data.deletedCount > 0) {
                             refetch();
                             Swal.fire(

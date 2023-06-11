@@ -2,13 +2,13 @@
     {
       "instructorName": "John Smith",
       "instructorImage": "https://upload.wikimedia.org/wikipedia/commons/4/40/Jean-Luc_Ponty.jpg",
-      "instructorEmail": "john.smith@example.com",
+      "instructorEmail": "john.smith@camp.com",
       "yearOfExperience": 15
     },
     {
       "instructorName": "Emily Johnson",
       "instructorImage": "https://cdn.mos.cms.futurecdn.net/osxtLu8dzahKB3gUrgDded.jpg",
-      "instructorEmail": "emily.johnson@example.com",
+      "instructorEmail": "emily.johnson@camp.com",
       "yearOfExperience": 18
     },
     {
@@ -20,7 +20,7 @@
     {
       "instructorName": "Sarah Adams",
       "instructorImage": "https://www.rcm.ac.uk/media/6x4%20Oboist%20and%20flautist%20in%20orchestral%20rehearsal.jpg",
-      "instructorEmail": "sarah.adams@example.com",
+      "instructorEmail": "sarah.adams@camp.com",
       "yearOfExperience": 16
     },
     {
@@ -36,9 +36,9 @@
       "yearOfExperience": 19
     },
     {
-      "instructorName": "Olivia Anderson",
+      "instructorName": "Olivia",
       "instructorImage": "https://static.wikia.nocookie.net/monstercat/images/e/e2/Minsbie.jpg",
-      "instructorEmail": "olivia.anderson@example.com",
+      "instructorEmail": "olivia@camp.com",
       "yearOfExperience": 15
     },
     {

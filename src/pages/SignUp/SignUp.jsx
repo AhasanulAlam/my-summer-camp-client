@@ -23,7 +23,7 @@ const SignUp = () => {
                 updateUserProfile(data.name, data.photoURL)
                     .then(() => {
                         // Call API for insert user data in the database
-                        const saveUpdatedUser = { name: data.name, email: data.email }
+                        const saveUpdatedUser = { name: data.name, email: data.email, image: data.photoURL }
                         fetch(`http://localhost:5000/users`, {
                             method: 'POST',
                             headers: {

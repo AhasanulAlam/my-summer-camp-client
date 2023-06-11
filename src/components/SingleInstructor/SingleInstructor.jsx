@@ -1,7 +1,7 @@
 import Swal from "sweetalert2";
 
 const SingleInstructor = ({ instructor }) => {
-    const { instructorName, instructorImage, instructorEmail } = instructor;
+    const { name, image, email } = instructor;
 
     const handleMyClasses = () => {
         Swal.fire({
@@ -16,12 +16,12 @@ const SingleInstructor = ({ instructor }) => {
     return (
         <>
             <div className="card w-auto bg-base-100 shadow-xl">
-                <figure><img src={instructorImage} alt="Class Image" /></figure>
+                <figure><img src={image} alt="Class Image" /></figure>
                 <div className="card-body">
-                    <h2 className="card-title text-indigo-600">{instructorName}</h2>
-                    <p className="text-sm">Email: {instructorEmail}</p>
+                    <h2 className="card-title text-indigo-600">{name}</h2>
+                    <p className="text-sm">Email: {email}</p>
                     <div className="card-actions justify-center">
-                        <button onClick={() => handleMyClasses(instructorEmail)} className="btn btn-outline btn-success border border-l-4 border-r-4">My Classes</button>
+                        <button onClick={() => handleMyClasses(email)} className="btn btn-outline btn-success border border-l-4 border-r-4">My Classes</button>
                     </div>
                 </div>
             </div>

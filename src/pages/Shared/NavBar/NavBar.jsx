@@ -3,10 +3,16 @@ import { FaCartPlus, FaMusic } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
 import useCart from "../../../hooks/useCart";
+import useAdmin from "../../../hooks/useAdmin";
+import useInstructor from "../../../hooks/useInstructor";
 
 const NavBar = () => {
     const { user, logOut, setLoading } = useContext(AuthContext);
+    const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructor();
+
     const [cart] = useCart();
+
 
     const handleLogout = () => {
         logOut()
@@ -20,7 +26,7 @@ const NavBar = () => {
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/classes'>Classes</Link></li>
         <li><Link to='/instructors'>Instructors</Link></li>
-        <li><Link to='/dashboard'>Dashboard</Link></li>
+        <li><Link to={ isAdmin ? '/dashboard/adminhome' : isInstructor ? '/dashboard/instructorhome' : '/dashboard/studenthome' }>Dashboard</Link></li>
     </>
     return (
         <>

@@ -58,7 +58,7 @@ const Dashboard = () => {
                                 : isInstructor ?
                                     <>
                                         <li>
-                                            <NavLink to='/dashboard/instructorhome'><FaHome></FaHome>Admin Home</NavLink>
+                                            <NavLink to='/dashboard/instructorhome'><FaHome></FaHome>Instructor Home</NavLink>
                                         </li>
                                         <li>
                                             <NavLink to="/dashboard/addclass"><FaClipboardList></FaClipboardList>Add A Class</NavLink>

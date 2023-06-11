@@ -3,7 +3,6 @@ import useCart from "../../../hooks/useCart";
 import { FaRegCreditCard, FaRegTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
-import { DisabledState } from "@egjs/react-flicking";
 
 
 const MyCart = () => {

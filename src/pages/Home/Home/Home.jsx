@@ -9,7 +9,6 @@ const Home = () => {
                 <title>Melody Tune | Home</title>
                 <link rel="canonical" href="https://www.tacobell.com/" />
             </Helmet>
-            <h2>This is Home</h2>
             <Banner></Banner>
         </div>
     );

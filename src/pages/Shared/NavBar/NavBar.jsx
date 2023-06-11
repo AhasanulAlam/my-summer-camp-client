@@ -5,12 +5,14 @@ import { AuthContext } from "../../../providers/AuthProvider";
 import useCart from "../../../hooks/useCart";
 
 const NavBar = () => {
-    const { user, logOut } = useContext(AuthContext);
+    const { user, logOut, setLoading } = useContext(AuthContext);
     const [cart] = useCart();
 
     const handleLogout = () => {
         logOut()
-            .then(() => { })
+            .then(() => {
+                setLoading(false);
+             })
             .catch(error => console.error(error))
     }
 

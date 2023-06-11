@@ -3,6 +3,7 @@ import useCart from "../../../hooks/useCart";
 import { FaRegCreditCard, FaRegTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import { DisabledState } from "@egjs/react-flicking";
 
 
 const MyCart = () => {
@@ -50,6 +51,9 @@ const MyCart = () => {
             <div className="h-20 mb-8 text-xl flex justify-evenly items-center bg-indigo-400">
                 <h3>Selected Classes: {cart.length}</h3>
                 <h3>Total Price: ${totalClassesPrice}</h3>
+                <Link to="/dashboard/payment">
+                    <button disabled={cart.length === 0 && true} className="btn btn-success btn-sm text-green-900"> Make Payment <FaRegCreditCard></FaRegCreditCard> </button>
+                </Link>
             </div>
             <div>
                 <div className="overflow-x-auto">
@@ -61,7 +65,6 @@ const MyCart = () => {
                                 <th>Image</th>
                                 <th>Name</th>
                                 <th>Price</th>
-                                <th>Make Payment</th>
                                 <th>Delete</th>
                             </tr>
                         </thead>
@@ -79,11 +82,6 @@ const MyCart = () => {
                                     </td>
                                     <td>{rowData.className}</td>
                                     <td>${rowData.price}</td>
-                                    <td>
-                                        <Link to="/dashboard/payment">
-                                            <button className="btn btn-error btn-sm text-white">Payment <FaRegCreditCard></FaRegCreditCard> </button>
-                                        </Link>
-                                    </td>
                                     <td>
                                         <button onClick={() => handleDeleteCartClass(rowData)} className="btn btn-error"><FaRegTrashAlt className="text-white"></FaRegTrashAlt> </button>
                                     </td>

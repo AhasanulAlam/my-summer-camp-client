@@ -7,14 +7,14 @@ import useCart from "../../hooks/useCart";
 const SingleClass = ({ singleClass }) => {
     const { _id, className, classImage, instructorName, instructorEmail, availableSeats, price, duration } = singleClass;
     const { user } = useContext(AuthContext);
-    const [,refetch] = useCart();
+    const [, refetch] = useCart();
     const navigate = useNavigate();
     const location = useLocation();
 
     const handleAddToCart = (singleClass) => {
         console.log(singleClass);
         if (user && user.email) {
-            const cartItem = {classItemId: _id, className, classImage, instructorName, instructorEmail, availableSeats, price, duration, email: user.email} 
+            const cartItem = { classItemId: _id, className, classImage, instructorName, instructorEmail, availableSeats, price, duration, email: user.email }
             fetch(`http://localhost:5000/carts`, {
                 method: 'POST',
                 headers: {

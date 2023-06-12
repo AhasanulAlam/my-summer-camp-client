@@ -14,7 +14,7 @@
     {
       "instructorName": "Michael Thompson",
       "instructorImage": "http://www.eaglesonlinecentral.com/images/f1402.JPG",
-      "instructorEmail": "michael.thompson@example.com",
+      "instructorEmail": "michael.thompson@camp.com",
       "yearOfExperience": 12
     },
     {
@@ -26,13 +26,13 @@
     {
       "instructorName": "David Wilson",
       "instructorImage": "https://therockriff.files.wordpress.com/2012/09/163-fe-leto-1.jpg",
-      "instructorEmail": "david.wilson@example.com",
+      "instructorEmail": "david.wilson@camp.com",
       "yearOfExperience": 13
     },
     {
       "instructorName": "Jessica Roberts",
       "instructorImage": "https://chrismcgovernmusic.files.wordpress.com/2012/09/marielroberts.jpg",
-      "instructorEmail": "jessica.roberts@example.com",
+      "instructorEmail": "jessica.roberts@camp.com",
       "yearOfExperience": 19
     },
     {
@@ -44,19 +44,19 @@
     {
       "instructorName": "Daniel Thompson",
       "instructorImage": "https://1panflute.com/blog/wp-content/garcia.jpg",
-      "instructorEmail": "daniel.thompson@example.com",
+      "instructorEmail": "daniel.thompson@camp.com",
       "yearOfExperience": 17
     },
     {
       "instructorName": "Maria Rodriguez",
       "instructorImage": "https://img.grouponcdn.com/deal/2eYcyy9zSeD8f1bjLddfWqrkYzS4/2e-866x520/v1/c870x524.jpg",
-      "instructorEmail": "maria.rodriguez@example.com",
+      "instructorEmail": "maria.rodriguez@camp.com",
       "yearOfExperience": 11
     },
     {
       "instructorName": "Alex Turner",
       "instructorImage": "https://images.seattletimes.com/wp-content/uploads/2016/11/0e2ab914-a6cf-11e6-a332-8dea80877534.jpg",
-      "instructorEmail": "alex.turner@example.com",
+      "instructorEmail": "alex.turner@camp.com",
       "yearOfExperience": 14
     }
   ]

@@ -129,10 +129,10 @@ const SignUp = () => {
                                             pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
 
                                         })} name="confirm" placeholder="Confirm Password" className="input input-bordered" />
-                                        {errors.password?.type === 'required' && <span className="text-red-600 text-xs">Confirm is required!</span>}
-                                        {errors.password?.type === 'minLength' && <span className="text-red-600 text-xs">Confirm must be 6 characters!</span>}
-                                        {errors.password?.type === 'maxLength' && <span className="text-red-600 text-xs">Confirm must be less then 20 characters!</span>}
-                                        {errors.password?.type === 'pattern' && <span className="text-red-600 text-xs">Confirm must have one uppercase one lowercase & one special characters!</span>}
+                                        {errors.confirm?.type === 'required' && <span className="text-red-600 text-xs">Confirm password is required!</span>}
+                                        {errors.confirm?.type === 'minLength' && <span className="text-red-600 text-xs">Confirm password must be 6 characters!</span>}
+                                        {errors.confirm?.type === 'maxLength' && <span className="text-red-600 text-xs">Confirm password must be less then 20 characters!</span>}
+                                        {errors.confirm?.type === 'pattern' && <span className="text-red-600 text-xs">Confirm password must have one uppercase one lowercase & one special characters!</span>}
 
                                     </div>
                                     <div className="form-control mt-6">

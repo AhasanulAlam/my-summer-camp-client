@@ -90,7 +90,7 @@ const CheckoutForm = ({ cart, price }) => {
                 .then(res => {
                     console.log(res.data);
                     if (res.data.insertedId) {
-                        // display confirmation TODO:  
+                        // display confirmation:  
                         Swal.fire({
                             position: 'center',
                             icon: 'success',

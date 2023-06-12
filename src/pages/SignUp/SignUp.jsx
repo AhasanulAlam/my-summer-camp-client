@@ -25,7 +25,7 @@ const SignUp = () => {
                     .then(() => {
                         // Call API for insert user data in the database
                         const saveUpdatedUser = { name: data.name, email: data.email, image: data.photoURL }
-                        fetch(`http://localhost:5000/users`, {
+                        fetch(`https://my-summer-camp-server.vercel.app/users`, {
                             method: 'POST',
                             headers: {
                                 'content-type': 'application/json'

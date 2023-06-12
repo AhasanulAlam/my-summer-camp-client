@@ -18,7 +18,7 @@ const InstructorRoute = ({ children }) => {
                 <span className="loading loading-spinner text-success"></span>
                 <span className="loading loading-spinner text-warning"></span>
                 <span className="loading loading-spinner text-error"></span>
-                <span className="">Instructor Route</span>
+                <span className="">Instructor Only</span>
             </div>
         </>
     }

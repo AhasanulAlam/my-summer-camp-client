@@ -19,7 +19,7 @@ const SocialLogin = () => {
                 console.log('Google logged User',loggedInUser);
                 // Call API for insert user data in the database
                 const saveUpdatedUser = { name: loggedInUser.displayName, email: loggedInUser.email, image: loggedInUser.photoURL }
-                fetch(`http://localhost:5000/users`, {
+                fetch(`https://my-summer-camp-server.vercel.app/users`, {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

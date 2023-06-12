@@ -11,7 +11,7 @@ const ManageClasses = () => {
     })
 
     const handleApproveClass = (singleClass) => {
-        fetch(`http://localhost:5000/class/approve/${singleClass._id}`, {
+        fetch(`https://my-summer-camp-server.vercel.app/class/approve/${singleClass._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
@@ -33,7 +33,7 @@ const ManageClasses = () => {
         console.log(singleClass);
         const denyFeedBack = document.getElementById(`feedbackField${singleClass._id}`).value;
         const feedBack = { feedBack: denyFeedBack }        
-        fetch(`http://localhost:5000/class/deny/${singleClass._id}`, {
+        fetch(`https://my-summer-camp-server.vercel.app/class/deny/${singleClass._id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'

@@ -1,9 +1,7 @@
 import { Helmet } from "react-helmet-async";
-import useAuth from "../../../hooks/useAuth";
 import useClassesForStudent from "../../../hooks/useClassesForStudent";
 
 const MyEnrolledClass = () => {
-    const { user } = useAuth();
     const [classes] = useClassesForStudent();
 
     return (

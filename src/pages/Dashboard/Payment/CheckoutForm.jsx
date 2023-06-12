@@ -2,6 +2,7 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const CheckoutForm = ({ cart, price }) => {
     const stripe = useStripe();
@@ -89,7 +90,14 @@ const CheckoutForm = ({ cart, price }) => {
                 .then(res => {
                     console.log(res.data);
                     if (res.data.insertedId) {
-                        // display confirmation TODO:                        
+                        // display confirmation TODO:  
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: 'Your Payment Successful!',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });                      
                     }
                 })
         }

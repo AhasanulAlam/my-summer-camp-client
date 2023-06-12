@@ -71,13 +71,11 @@ const Dashboard = () => {
                                     : <>
                                         <li><NavLink to='/dashboard/studenthome'><FaHome></FaHome>Student Home</NavLink></li>
                                         <li>
-                                            <NavLink to="/dashboard/mycart"><FaCartPlus></FaCartPlus>
-                                                My Selected Classes
+                                            <NavLink to="/dashboard/mycart"><FaCartPlus></FaCartPlus>My Selected Classes
                                                 <span className="badge badge-secondary badge-outline">+{cart?.length || 0}</span>
                                             </NavLink>
                                         </li>
                                         <li><NavLink to="/dashboard/myEnrolledClass"><FaStackOverflow></FaStackOverflow>My Enrolled Classes</NavLink></li>
-
                                     </>
                         }
 

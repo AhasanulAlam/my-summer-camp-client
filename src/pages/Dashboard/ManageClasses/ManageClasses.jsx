@@ -1,17 +1,58 @@
 import { Helmet } from "react-helmet-async";
-import useClassesToManage from "../../../hooks/useClassesToManage";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
+import Swal from "sweetalert2";
 
 const ManageClasses = () => {
-    const [classes] = useClassesToManage();
+    const [axiosSecure] = useAxiosSecure();
+    const { data: classes = [], refetch } = useQuery(['classes'], async () => {
+        const res = await axiosSecure.get(`/manageclasses`)
+        return res.data;
+    })
 
-    const handleApproveClass = (id) =>{
-        console.log(id);
-        // TODO: Update the class Status
-    
+    const handleApproveClass = (singleClass) => {
+        fetch(`http://localhost:5000/class/approve/${singleClass._id}`, {
+            method: 'PATCH'
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount) {
+                    refetch();
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: `${singleClass.className} is Approved Class Now!`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            })
+
     }
-    const handleDenyClass = (id) =>{
-        console.log(id);
-        // TODO: Update the class Status
+    const handleDenyClass = (singleClass) => {
+        console.log(singleClass);
+        const denyFeedBack = document.getElementById(`feedbackField${singleClass._id}`).value;
+        const feedBack = { feedBack: denyFeedBack }        
+        fetch(`http://localhost:5000/class/deny/${singleClass._id}`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(feedBack)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount) {
+                    refetch();
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: `${singleClass.className} is Approved Class Now!`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            })
     }
 
 
@@ -64,11 +105,14 @@ const ManageClasses = () => {
                                     <td> {singleClass.classStatus} </td>
                                     <th>
                                         {
-                                            <button onClick={(()=>handleApproveClass(singleClass._id))} disabled={singleClass.classStatus === 'approved' && true} className="btn btn-success btn-xs">Approve</button>
+                                            <button onClick={(() => handleApproveClass(singleClass))} disabled={(singleClass.classStatus === 'approved' || singleClass.classStatus === 'denied') && true} className="btn btn-success btn-xs">Approve</button>
                                         }
                                     </th>
                                     <th>
-                                        <button onClick={(()=>handleDenyClass(singleClass._id))} disabled={singleClass.classStatus === 'approved' && true} className="btn btn-error btn-xs">Deny</button>
+                                        <button onClick={(() => handleDenyClass(singleClass))} disabled={(singleClass.classStatus === 'approved' || singleClass.classStatus === 'denied') && true} className="btn btn-error btn-xs">Deny</button>
+                                    </th>
+                                    <th>
+                                        <textarea disabled={(singleClass.classStatus === 'approved' || singleClass.classStatus === 'denied') && true}  className="textarea textarea-error" name="feedbackField" id={`feedbackField${singleClass._id}`} placeholder="Feedback if Deny!" required></textarea>
                                     </th>
                                 </tr>
                                 )

@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet-async";
 import Lottie from "lottie-react";
 import MelodyTuneLogin from '../../assets/MelodyTuneRegistration.json';
 import { Link, useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
 import SocialLogin from "../Shared/SocialLogin/SocialLogin";
@@ -12,6 +12,7 @@ import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 const SignUp = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const { createUser, updateUserProfile } = useContext(AuthContext);
+    const [showHidePass, setShowHidePass] = useState(false);
     const navigate = useNavigate();
 
     const onSubmit = data => {
@@ -95,7 +96,7 @@ const SignUp = () => {
                                         <label className="label">
                                             <span className="label-text">Password</span>
                                         </label>
-                                        <input type="password" {...register("password", {
+                                        <input type={showHidePass ? "text" : "password"} {...register("password", {
                                             required: true,
                                             minLength: 6,
                                             maxLength: 20,
@@ -106,6 +107,32 @@ const SignUp = () => {
                                         {errors.password?.type === 'minLength' && <span className="text-red-600 text-xs">Password must be 6 characters!</span>}
                                         {errors.password?.type === 'maxLength' && <span className="text-red-600 text-xs">Password must be less then 20 characters!</span>}
                                         {errors.password?.type === 'pattern' && <span className="text-red-600 text-xs">Password must have one uppercase one lowercase & one special characters!</span>}
+
+                                    </div>
+                                    <div className="flex justify-end">
+                                        <label className="label">
+                                            <Link onClick={() => setShowHidePass(!showHidePass)} className="label-text-alt link link-hover">
+                                                {
+                                                    showHidePass ? <span>Hide Password</span> : <span>Show Password</span>
+                                                }
+                                            </Link>
+                                        </label>
+                                    </div>
+                                    <div className="form-control">
+                                        <label className="label">
+                                            <span className="label-text">Confirm Password</span>
+                                        </label>
+                                        <input type={showHidePass ? "text" : "password"} {...register("confirm", {
+                                            required: true,
+                                            minLength: 6,
+                                            maxLength: 20,
+                                            pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
+
+                                        })} name="confirm" placeholder="Confirm Password" className="input input-bordered" />
+                                        {errors.password?.type === 'required' && <span className="text-red-600 text-xs">Confirm is required!</span>}
+                                        {errors.password?.type === 'minLength' && <span className="text-red-600 text-xs">Confirm must be 6 characters!</span>}
+                                        {errors.password?.type === 'maxLength' && <span className="text-red-600 text-xs">Confirm must be less then 20 characters!</span>}
+                                        {errors.password?.type === 'pattern' && <span className="text-red-600 text-xs">Confirm must have one uppercase one lowercase & one special characters!</span>}
 
                                     </div>
                                     <div className="form-control mt-6">

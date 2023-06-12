@@ -36,7 +36,8 @@ const AddClass = () => {
                         availableSeats: parseInt(availableSeats),
                         price: parseFloat(price),
                         duration: parseInt(duration),
-                        classStatus: 'pending'
+                        classStatus: 'pending',
+                        enrolledSeats: parseInt(0)
                     }
                     console.log(newClass);
 

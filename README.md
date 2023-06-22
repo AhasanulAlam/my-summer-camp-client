@@ -23,8 +23,8 @@ Below are the features implemented in this project:
 
 ## Useful Links
 
-* [gitHub server code Link](https://github.com/programming-hero-web-course1/b7a12-summer-camp-server_side-AhasanulAlam) : Github Server link
+* [gitHub server code Link](https://github.com/AhasanulAlam/my-summer-camp-server) : Github Server link
 
-* [gitHub client code Link](https://github.com/programming-hero-web-course1/b712-summer-camp-client-side-AhasanulAlam) : Github Client link
+* [gitHub client code Link](https://github.com/AhasanulAlam/my-summer-camp-client) : Github Client link
 
 * [Live web Link](https://my-summer-camp.web.app/) : Live web Link
